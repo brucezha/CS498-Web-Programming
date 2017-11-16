@@ -1,0 +1,53 @@
+<br>
+<div class="row">
+    <div class="columns">
+        <div class="small-12 columns">
+
+            <h4 style='display:inline;'>Add Users </h4>
+            <h5 style="color: darkgray; display:inline;">Our next task-slayer</h5>
+            <br>
+            <br>
+            <form name="form" data-abide novalidate>
+                <div class="small-6 columns">
+                    <label>Name <span style="color:red">* </span>
+                        <input type="text" name="name" placeholder="Enter your Name" required ng-model="user.formData.name">
+
+                        <span class="form-error is-visible"
+                              ng-if="form.$submitted && form.name.$error.required">
+                            Name is required.
+                        </span>
+                    </label>
+
+                    <label>Email <span style="color:red">* </span>
+                        <input type="email" name="email" placeholder="Enter your Email Adress" required
+                               ng-model="user.formData.email">
+
+                        <span class="form-error is-visible"
+                              ng-if="form.$submitted && form.email.$error.required">
+                            Email is required.
+                        </span>
+                        <span class="form-error is-visible"
+                              ng-if="form.$submitted && form.email.$error.email">
+                            Invalid format.
+                        </span>
+                    </label>
+                    <br>
+
+                    <div class="row">
+                        <div class="small-6 columns">
+                            <button class="button" type="submit" ng-click="user.submit(form)">Submit</button>
+                        </div>
+                        <div class="small-6 columns text-right">
+                            <button class="button alert" type="reset" ng-click="user.reset(form)">Reset</button> &nbsp;&nbsp;&nbsp;
+                        </div>
+                    </div>
+
+                    <div ng-if="displayText != ''" class="callout" ng-class="user.hasAdded ? 'success' : 'alert'">
+                        <span>{{ displayText }}</span>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,30 @@
+<br>
+<div class="row">
+    <div class="columns">
+        <div class="small-12 columns">
+            <h4 style='display:inline;'>Settings </h4>
+
+            <h5 style="color: darkgray; display:inline;">Set your backend URL</h5>
+        </div>
+
+        <form data-abide novalidate>
+            <br>
+            <br>
+            <div class="small-12 columns">
+                <input ng-model="url" type="text" placeholder="Enter URL" required>
+                <span class="form-error">
+                    Please enter a valid URL
+                </span>
+            </div>
+
+
+            <div class="text-center">
+                <button ng-click="setUrl()" class="button">
+                Set URL</button>
+
+                <br> {{displayText}}
+
+            </div>
+        </form>
+    </div>
+</div>

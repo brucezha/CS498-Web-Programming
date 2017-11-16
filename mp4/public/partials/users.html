@@ -1,0 +1,44 @@
+<br>
+<div class="row">
+    <div class="columns">
+        <div class="small-12 columns">
+            <h4 style='display:inline;'>Users </h4>
+
+            <h5 style="color: darkgray; display:inline;">a list of cool people</h5>
+
+            <div style='display:inline;'>
+                <a href="#/addUser">
+                    <button class="button success float-right">Add User</button>
+                </a>
+            </div>
+
+            <hr>
+            <br>
+
+            <table class="small-12 columns hover">
+                <thead>
+                    <tr>
+                        <th style="width:44%">Name</th>
+                        <th>Email</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tr ng-repeat="user in userlist.data">
+                    <td>
+                        <a ng-href="#/users/{{ user._id }}">{{ user.name }}</a>
+                    </td>
+                    <td>
+                        <i>{{ user.email }}</i>
+                    </td>
+                    <td class="text-right" style="width: 10%">
+                        <button ng-click="userlist.delete(user._id)" class="button alert">Delete</button>
+                    </td>
+                </tr>
+                <tr ng-if="userlist.data.length == 0">
+                    <td class="text-center"><br>No user<br><br></td>
+                </tr>
+            </table>
+
+        </div>
+    </div>
+</div>

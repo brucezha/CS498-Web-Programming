@@ -1,0 +1,75 @@
+<br>
+<div class="row">
+    <div class="columns">
+        <div class="small-12 columns">
+            <h4 style='display:inline;'>User Profile</h4>
+
+            <h5 style="color: darkgray; display:inline;">just like on Facebook but better</h5>
+
+            <div style='display:inline; float:right;'>
+                <button class="button" onclick="history.back()">Go back</button>
+            </div>
+            <hr>
+
+            <div>
+
+                <div class="row">
+                    <h5 class="medium-6 columns">
+                        {{ user.name }}
+                    </h5>
+                    <h5 class="medium-6 columns">
+                        {{ user.email }}
+                    </h5>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="small-12 columns">
+                        <h4>Pending Tasks</h4>
+                        <table class="hover">
+                            <tr ng-repeat="task in user.pendingTask">
+                                <td style="width: 60%">
+                                    <a ng-href="#/tasks/{{ task._id }}">{{ task.name }}</a>
+                                </td>
+                                <td class="text-right" style="width: 30%">
+                                    <strong>Deadline:</strong> {{ task.deadline | date:'MMM dd, yyyy' }}<br>
+                                </td>
+                                <td class="text-center">
+                                    <button ng-click="user.completeTask(task._id)" class="button">Completed</button>
+                                </td>
+                            </tr>
+                            <tr ng-if="user.pendingTask.length == 0">
+                                <td class="text-center"><br>No pending tasks<br><br></td>
+                            </tr>
+                        </table>
+                        <div class="text-center">
+                            <button class="button" ng-click="toggleCompletedTask()">
+                    {{ showCompletedTask ? 'Hide' : 'Show' }} Completed Tasks
+                </button>
+                        </div>
+                        <div ng-if="showCompletedTask">
+                            <br>
+                            <h4>Completed Tasks</h4>
+                            <table class="hover">
+                                <tr ng-repeat="task in user.completedTask">
+                                    <td style="width: 60%">
+                                        <a ng-href="#/tasks/{{ task._id }}">{{ task.name }}</a>
+                                    </td>
+                                    <td class="text-right" style="width: 30%">
+                                        <strong>Deadline:</strong> {{ task.deadline | date:'MMM dd, yyyy'}}<br>
+                                    </td>
+                                    <td>
+
+                                    </td>
+
+                                </tr>
+                                <tr ng-if="user.completedTask.length == 0">
+                                    <td class="text-center"><br>No completed task<br><br></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

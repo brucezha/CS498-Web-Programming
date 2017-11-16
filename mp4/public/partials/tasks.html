@@ -1,0 +1,95 @@
+<br>
+<div class="row">
+    <div class="columns">
+        <div class="small-12 columns">
+            <h4 style='display:inline;'>Tasks </h4>
+
+            <h5 style="color: darkgray; display:inline;">really important stuff</h5>
+
+            <div style='display:inline;'>
+                <a href="#/addTask">
+                    <button class="button success float-right">Add Task</button>
+                </a>
+            </div>
+            <hr>
+            <div class="row">
+
+                <fieldset class="large-5 columns">
+                    <input id="show-pending" type="radio" value="pending" ng-model="tasklist.show" ng-click="tasklist.currentPage = 0; tasklist.update()">
+                    <label for="show-pending">Pending Tasks</label>
+                    <input id="show-completed" type="radio" value="completed" ng-model="tasklist.show" ng-click="tasklist.currentPage = 0; tasklist.update()">
+                    <label for="show-completed">Completed Tasks</label>
+                    <input id="show-all" type="radio" value="all" ng-model="tasklist.show" ng-click="tasklist.currentPage = 0; tasklist.update()">
+                    <label for="show-all">All Tasks</label>
+                </fieldset>
+
+                <fieldset class="large-3 columns">
+                    <lable>Sort by</lable> <select ng-model="tasklist.predicate" ng-change="tasklist.update()">   
+                        <option value="dateCreated">Date Created</option>
+                        <option value="deadline">Deadline</option>
+                        <option value="name">Name</option>
+                        <option value="assignedUserName">Assigned User</option>
+                </select>
+                </fieldset>
+
+
+                <fieldset class="large-4 columns">
+                    <legend class="show-for-large">&nbsp;</legend>
+                    <input id="order-asc" type="radio" value="asc" ng-model="tasklist.order" ng-click="tasklist.update()">
+                    <label for="order-asc">Ascending</label>
+                    <input id="order-desc" type="radio" value="desc" ng-model="tasklist.order" ng-click="tasklist.update()">
+                    <label for="order-desc">Descending</label>
+                </fieldset>
+            </div>
+            <div class="row">
+                <table class="small-12 columns hover">
+                    <thead>
+                        <tr>
+                            <th style="width: 44%">Task Name</th>
+                            <th style="width: 44%">Assigned User</th>
+                            <th style="width: 12%">Deadline</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tr ng-repeat="task in tasklist.data">
+                        <td>
+                            <a ng-href="#/tasks/{{ task._id }}">{{ task.name }}</a>
+                        </td>
+                        <td>
+                            {{ task.assignedUserName }}
+                        </td>
+
+
+                        <td>
+                            {{ task.deadline | date:'MMM dd, yyyy'}}<br>{{ task.assignedUserName }}
+                        </td>
+                        <td class="text-center" style="width: 8%">
+                            <button ng-click="tasklist.delete(task._id)" class="button alert">Delete</button>
+                        </td>
+                    </tr>
+                    <tr ng-if="tasklist.data.length == 0">
+                        <td class="text-center"><br>No Task<br><br></td>
+                    </tr>
+                </table>
+            </div>
+
+            <ul class="pagination text-center" role="navigation" aria-label="Pagination">
+                <li class="pagination-previous">
+                    <a aria-label="Previous page" ng-class="tasklist.currentPage == 0 ? 'disabled' : ''" ng-click="tasklist.previousPage()">
+                        Previous
+                    </a>
+                </li>
+                <li></li>
+<li>{{tasklist.currentPage+1}} / {{tasklist.numberOfPages()}}</li>
+                <li></li>
+                <li class="pagination-next">
+                    <a aria-label="Next page" ng-class="tasklist.currentPage >= tasklist.numberOfPages()-1 ? 'disabled' : ''" ng-click="tasklist.nextPage()">
+                        Next
+                    </a>
+                </li>
+            </ul>
+
+
+        </div>
+    </div>
+</div>

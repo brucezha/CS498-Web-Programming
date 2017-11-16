@@ -1,0 +1,49 @@
+<br>
+<div class="row">
+    <div class="columns">
+        <div class="small-12 columns">
+            <h4 style='display:inline;'>Tasks Detail</h4>
+
+            <h5 style="color: darkgray; display:inline;">gotta get this done</h5>
+
+            <div style='display:inline; float:right;'>
+                <a ng-href="#/tasks/{{ task._id }}/edit">
+                    <button class="button success">Edit Task</button>
+                </a>
+                &nbsp;
+                <button class="button" onclick="history.back()">Go Back</button>
+            </div>
+
+
+            <div>
+
+                <hr>
+                <div class="row">
+                    <div class="small-12 columns">
+
+                        <h3 style='display:inline;'>{{ task.name }}</h3>
+
+                        <div style='display:inline; float:right;'>
+                            <strong>Deadline: </strong>{{ task.deadline | date:'MMM dd, yyyy'}}
+
+                            <span class="label" ng-class="task.completed ? 'success' : 'warning'">
+                            {{ task.completed ? 'Completed' : 'Pending' }}
+                            </span>
+                        </div>
+                    </div>
+
+                </div>
+                <br>
+                <p>{{ task.description }}</p>
+                <br>
+
+                <div class="row">
+                    <div class="medium-6 columns">
+                        <strong>Assigned to: </strong> {{ task.assignedUserName }}.
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
