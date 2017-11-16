@@ -1,0 +1,38 @@
+<div id="details" class="row">
+    <a id="p" ng-href="#/details?rank={{ movie.rank - 1 < 1 ? 250 : movie.rank - 1 }}">&#x25C0; </a>
+    <a id="n" ng-href="#/details?rank={{ movie.rank + 1 > 250 ? 1 : movie.rank + 1 }}">&#x25B6;</a>
+
+    <div class="wrap">
+        <div class="medium-4 columns">
+        <img ng-src="data/images/{{ movie.imdbID }}.jpg">
+        <br>
+        <br>
+    </div>
+
+    <div class="medium-8 columns">
+
+        <h2>{{ movie.title }}</h2>
+
+        <br>
+
+        <p>{{movie.plot}}</p>
+
+        <br>
+
+        <a>IMDb Rating: </a>{{ movie.imdbRating }}
+        <br>
+        <a>Awards: </a>{{ movie.awards }}
+        <br>
+        <a>Rated: </a>{{ movie.rated }}
+        <br>
+        <a>Released: </a>{{ movie.released }}
+        <br>
+        <a>Runtime: </a>{{ movie.runtime }}
+
+    </div>
+
+    <br>
+</div>
+
+</div>
+

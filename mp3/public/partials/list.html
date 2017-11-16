@@ -1,0 +1,52 @@
+<div id="list" class="row">
+    <div class="large-12 columns">
+        <input type="search" placeholder="Search" ng-model="keyword" />
+        <select ng-model="predicate">
+          
+            <option value="title">Title</option>
+            <option value="rank">Rank</option>
+            
+        </select>
+
+    </div>
+</div>
+
+
+<div class="row">
+    <fieldset class="large-12 columns">
+        <input id="order-asc" type="radio" value="asc" ng-model="order"><label for="order-asc">Ascending</label>
+        <input id="order-desc" type="radio" value="desc" ng-model="order"><label for="order-desc">Descending</label>
+    </fieldset>
+</div>
+
+
+<div ng-show="keyword" class="row small-up-1 medium-up-3 large-up-5">
+
+    <a class="column column-block" ng-repeat="movie in filtered = (movies | filter:{title: keyword} | orderBy:predicate:(order != 'asc'))" ng-href="#/details?rank={{ movie.rank }}">
+        <div class="container">
+
+            <img ng-src="data/images/{{ movie.imdbID }}.jpg">
+            <div class="description">
+                <h2>
+                    {{ movie.title }}
+
+                </h2>
+
+                <p>
+                    IMDb Rating: {{ movie.imdbRating }}
+                    <br> Awards: {{ movie.awards }}
+                </p>
+
+            </div>
+        </div>
+    </a>
+
+    <br>
+
+    <div class="row text-center">
+        <div class="large-12 columns">
+            <p>Showing {{ filtered.length }} movie(s).</p>
+        </div>
+    </div>
+
+</div>

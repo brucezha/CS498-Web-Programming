@@ -1,0 +1,33 @@
+<div id="gallery">
+    <div class="row">
+        <div class="large-12 columns">
+            <div class="gallery-genre" ng-repeat="genre in genres">
+                <a ng-if="selectedGenre != genre" ng-click="changeGenre(genre)">{{ genre == '' ? 'All' : genre }}</a>
+
+                <span ng-if="selectedGenre == genre"> {{ genre == '' ? 'All' : genre }} </span>
+
+            </div>
+            <br>
+            <br>
+        </div>
+
+
+
+        <div class="grid-x grid-margin-x small-up-2 medium-up-4 large-up-6">
+
+            <a class="column column-block" ng-repeat="movie in filtered = (movies | filter:{genre: selectedGenre})" ng-href="#/details?rank={{ movie.rank }}">
+                <img ng-src="data/images/{{ movie.imdbID }}.jpg">
+            </a>
+
+        </div>
+
+
+
+        <div class="row text-center">
+            <div class="large-12 columns">
+                <p>Showing {{ filtered.length }} movie(s).</p>
+            </div>
+        </div>
+        <br>
+    </div>
+</div>
