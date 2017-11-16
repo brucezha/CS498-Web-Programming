@@ -1,0 +1,59 @@
+// Add any custom Sass & CSS here
+body {
+    background: white;
+    margin-top: 20px;
+}
+
+h1 {
+    color: #333333;
+    text-shadow: 1px 1px 3px grey;
+    font-weight: bold;
+    margin-top: 30px;
+}
+
+a {
+    color: black;
+}
+
+h2 {
+    font-size: 150%;
+    font-weight: bold;
+}
+
+.search {
+    margin: 2px;
+}
+
+.container {
+    box-shadow: 0px 0px 7px #888888;
+    flex-direction: row;
+}
+
+.description {
+    padding: 2px 16px;
+    flex: 1 1 auto;
+}
+
+.gallery-genre {
+    display: inline-grid;
+    margin: 10px;
+}
+
+
+
+.wrap{
+    width: auto;
+    min-height: 400px;
+    margin: 0 auto;
+    padding: 10px;
+    overflow: hidden;
+    clear: none;
+}
+#p{
+    float: left;
+    top: 50%;
+}
+
+#n{
+    float: right;
+}
